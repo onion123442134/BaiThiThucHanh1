@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Câu 2</title>
+</head>
+<body>
+<script>
+    function lamTronDiem(diem) {
+        if (diem < 0 || diem > 100) {
+            return "Điểm không hợp lệ!";
+        }
+        if (diem < 48) {
+            return diem + " (Không làm tròn, trượt)";
+        }
+        if (diem < 50) {
+            return diem + " (Trượt)";
+        }
+
+        let boiSo5KeTiep = Math.ceil(diem / 5) * 5;
+        if (boiSo5KeTiep - diem < 3) {
+            diem = boiSo5KeTiep;
+        }
+
+        return diem;
+    }
+
+    let diem = parseInt(prompt("Nhập điểm (0-100):"));
+    let ketQua = lamTronDiem(diem);
+    document.write("Điểm sau khi làm tròn: " + ketQua);
+</script>
+</body>
+</html>

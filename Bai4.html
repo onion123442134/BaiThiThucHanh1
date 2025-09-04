@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Câu 4</title>
+    <link rel="stylesheet" href="Bai4.css">
+</head>
+<body>
+<h2>Quản lý khách hàng</h2>
+
+<form id="formKH">
+    <input type="text" id="maKH" placeholder="Mã khách hàng" required><br>
+    <input type="text" id="tenKH" placeholder="Tên khách hàng" required><br>
+    <input type="number" id="sdt" placeholder="Số điện thoại" required><br>
+    <input type="text" id="diaChi" placeholder="Địa chỉ" required><br>
+    <input type="email" id="email" placeholder="Email" required><br>
+    <button type="submit">Thêm khách hàng</button>
+</form>
+
+<h3>Danh sách khách hàng</h3>
+<table border="1" id="tableKH">
+    <tr>
+        <th>Mã KH</th>
+        <th>Tên KH</th>
+        <th>Số điện thoại</th>
+        <th>Địa chỉ</th>
+        <th>Email</th>
+    </tr>
+</table>
+
+<script>
+    class KhachHang {
+        constructor(ma, ten, sdt, diaChi, email) {
+            this.ma = ma;
+            this.ten = ten;
+            this.sdt = sdt;
+            this.diaChi = diaChi;
+            this.email = email;
+        }
+    }
+
+    let danhSach = [];
+
+    document.getElementById("formKH").addEventListener("submit", function(e) {
+        e.preventDefault();
+
+        let ma = document.getElementById("maKH").value;
+        let ten = document.getElementById("tenKH").value;
+        let sdt = document.getElementById("sdt").value;
+        let diaChi = document.getElementById("diaChi").value;
+        let email = document.getElementById("email").value;
+
+        let kh = new KhachHang(ma, ten, sdt, diaChi, email);
+        danhSach.push(kh);
+
+        hienThi();
+        this.reset();
+    });
+
+    function hienThi() {
+        let table = document.getElementById("tableKH");
+        table.innerHTML = `
+        <tr>
+          <th>Mã KH</th>
+          <th>Tên KH</th>
+          <th>Số điện thoại</th>
+          <th>Địa chỉ</th>
+          <th>Email</th>
+        </tr>
+      `;
+        for (let kh of danhSach) {
+            table.innerHTML += `
+          <tr>
+            <td>${kh.ma}</td>
+            <td>${kh.ten}</td>
+            <td>${kh.sdt}</td>
+            <td>${kh.diaChi}</td>
+            <td>${kh.email}</td>
+          </tr>
+        `;
+        }
+    }
+</script>
+</body>
+</html>

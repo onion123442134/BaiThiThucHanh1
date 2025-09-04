@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Câu 1</title>
+</head>
+<body>
+<script>
+    let n = parseInt(prompt("Nhập số phần tử không quá 20 phần tử:"));
+    if (n > 20 || n <= 0) {
+        alert("Chỉ nhập số phần tử <= 20");
+    } else {
+        let arr = [];
+        for (let i = 0; i < n; i++) {
+            arr.push(parseInt(prompt("Nhập phần tử thứ " + (i + 1) + ":")));
+        }
+        document.write("Mảng: " + arr + "<br>");
+        let sum = 0;
+        let multiples = [];
+        for (let x of arr) {
+            if (x % 15 === 0) {
+                multiples.push(x);
+                sum += x;
+            }
+        }
+        document.write("Các số chia hết cho 3 và 5: " + multiples + "<br>");
+        document.write("Tổng = " + sum);
+    }
+</script>
+</body>
+</html>
